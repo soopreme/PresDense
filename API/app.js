@@ -5,9 +5,7 @@ app.use(express.json());
 
 /*-----------API-----------*/
 app.post('/api/new', (req, res) => {
-    var body = req.body;
-
-    f.validateNewProfile(body)
+    f.validateNewProfile(req.body)
     .then(f.addProfile)
     .then(id => res.json({id}))
     .catch(err => res.send(err));
