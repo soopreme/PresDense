@@ -1,0 +1,149 @@
+@font-face {
+    font-family: "Soopreme";
+    src:url("../font/Soopreme.otf");
+}
+body {
+    text-align: center;
+    font-family: "Soopreme";
+    background-color: #D02120;
+}
+h1 span {
+    background-color: #D02120;
+    color: white;
+    padding: 10px;
+    font-size: 60px;
+}
+input {
+    font-family: "Soopreme";
+    font-size: 30px;
+    padding: 4px;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    margin: 3px;
+}
+textarea {
+    font-family: "Soopreme";
+    font-size: 30px;
+    padding: 4px;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    margin: 3px;
+}
+h3 {
+    font-size: 25px;
+    margin: -4px;
+}
+button {
+    background-color: #D02120;
+    color: white;
+    font-family: "Soopreme";
+    display: inline-block;
+    padding: 5px;
+    font-size: 30px;
+    border: none;
+}
+#container {
+    border: 5px solid black;
+    background-color: grey;
+    overflow:hidden;
+    width: auto;
+}
+#one {
+    background-color: white;
+    width: 300px;
+    float: left;
+    border: 3px solid black;
+    padding: 2px;
+    margin: 7px 3px 7px 3px;
+}
+#two  {
+    background-color: white;
+    width: 300px;
+    float: left;
+    border: 3px solid black;
+    padding: 2px;
+    margin: 7px 3px 7px 3px;
+}
+h4 {
+    font-size: 20px;
+    margin: -2px;
+    margin-top: 5px;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    width: 70%;
+}
+th {
+    background-color: #D02120;
+    color: white;
+}
+tr {
+    padding: 15px;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+h2 {
+    font-size: 40px;
+    margin: 0px;
+}
+.container {
+    margin: 25% 0px;
+    display: inline-block;
+    background-color: white;
+    width: 700px;
+    min-height: 50%;
+    flex-grow: 1;
+    padding: 10px;
+    border: black 5px solid;
+}
+#login {
+    text-align: center;
+    font-family: "Soopreme";
+    background-color: #D02120;
+    margin: 0px;
+    flex-shrink: 0;
+}
+canvas {
+    border: black 5px solid;
+    background-color: #D02120;
+}
+.adminInput {
+    font-family: "Soopreme";
+    font-size: 20px;
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 4px;
+    margin: 3px;
+}
+#inverse {
+    text-align: center;
+    font-family: "Soopreme";
+    background-color: #D02120;
+    margin: 0px 22%;
+    flex-shrink: 0;
+    color: white;
+}
+#inverse a:link {
+    color: white;
+}
+#inverse a:visited {
+    color: white;
+}
+#inverse a:active {
+    color: white;
+}
+#pfp {
+    width: 256px;
+    height: 256px;
+    border-radius: 128px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
