@@ -8,3 +8,4 @@ exports.getByPlatform = require('./getByPlatform');
 exports.saveNewData = require('./saveNewData');
 exports.loadProfiles = require('./loadProfiles');
 exports.init = require('./init');
+exports.findRelated = require('./findRelated');

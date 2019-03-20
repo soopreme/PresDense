@@ -6,24 +6,18 @@ $(function() {
 
 
     // new profile page
-    var newPostUrl = "http://localhost:555/api/new";
+    var domain = "localhost:555"
+    var IDClientLink = `http://${domain}/id/`
+    var newPostUrl = `http://${domain}/api/new`;
+    var searchPostUrl = `http://${domain}/api/search/name`;
+    var IDGetUrl = `http://${domain}/api/id/`;
+    var contentTypeHeader = new Headers({
+        'Content-Type': 'application/json'
+    });
 
     var postProfile = userProfile => new Promise((resolve, reject) => {
-        var contentTypeHeader = new Headers({
-            'Content-Type': 'application/json'
-        });
+        
         console.log(JSON.stringify(userProfile))
-        /*var request = new XMLHttpRequest();
-        request.open('POST', newPostUrl);
-        request.setRequestHeader("Content-Type", "application/json")
-        request.send(JSON.stringify(userProfile));
-        request.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                //var res = JSON.parse(this.responseText);
-                (resolve(this.responseText));
-            }
-        };
-        request.onerror = err => reject(err);*/
         fetch(newPostUrl, {
             method: 'POST',
             headers: contentTypeHeader,
@@ -53,13 +47,106 @@ $(function() {
         var twitter = $('#twitter').val();
         var facebook = $('#facebook').val();
         var userProfile = {picurl, name, bio, github, discord, snapchat, instagram, reddit, steam, twitter, facebook};
-        console.log(JSON.stringify(userProfile));
         postProfile(userProfile)
-        .then(res => window.location = "http://presdense.soopre.me/id/" + res.id)
+        .then(res => window.location = IDClientLink + res.id)
         .catch(err => {return $('#title').text(err)});
 
     }
 
     $('#submit').click(submitProfile);
+
+    var postJSON = (url, postBody) => new Promise((resolve, reject) => {
+        fetch(url, {
+            method: 'POST',
+            headers: contentTypeHeader,
+            body: JSON.stringify(postBody)
+        })
+        .then(res => {
+            return res.json();
+        })
+        .then(json => {
+            resolve(json.json);
+        })
+        .catch(err => {
+            reject(err);
+        });
+    });
+
+    var searchByName = query => new Promise((resolve, reject) => {
+        var queryBody = {
+            name: query
+        };
+        postJSON(searchPostUrl, queryBody)
+        .then(resolve)
+        .catch(reject);
+    });
+
+    var renderSearchToDOMCode = searchArray => new Promise((resolve, reject) => {
+        var outputToDOM = '<table>\n<tr><th>User Name</th><th>Platform</th><th>Profile Name</th>';
+        for(i=0; i<searchArray.length; i++) {
+            var isRestrictedPlatform 
+            = searchArray[i].foundPlatform === "name"
+            ? true
+            : searchArray[i].foundPlatform === "picurl"
+            ? true
+            : searchArray[i].foundPlatform === "bio"
+            ? true
+            : searchArray[i].foundPlatform === "profileID"
+            ? true
+            : false
+            if(isRestrictedPlatform) {
+                continue;
+            }
+            outputToDOM += `\n<tr>\n<td>${searchArray[i].foundName}</td>\n<td>${searchArray[i].foundPlatform}</td>\n<td><a href="${IDClientLink + searchArray[i].foundProfileID}">${searchArray[i].profileName}</a></td>\n</tr>`;
+        }
+        outputToDOM += '\n</table>'
+        return resolve(outputToDOM)
+    })
+
+    function submitSearch() {
+        var searchValue = $('#searchValue').val();
+        searchByName(searchValue)
+        .then(renderSearchToDOMCode)
+        .then(res => $('#results').html(res))
+        .catch(err => {return $('#title').text(err)});
+    }
+
+    $('#submitSearch').click(submitSearch);
+
+    var renderProfileToDOMCode = profileObject => new Promise((resolve, reject) => {
+        var outputToDOM = `\n
+        <img id="pfp" src="${profileObject.picurl}" />\n
+        <h2>${profileObject.name}</h2>\n
+        <h4>${profileObject.bio}</h4>\n
+        <br><br>\n
+        <table>\n
+        <tr><th>Platform</th><th>Username</th><tr>\n`
+        for(platform in profileObject) {
+            var isRestrictedPlatform = (platform === "name" || platform === "picurl" || platform === "bio" || platform === "profileID") ? true : false;
+            if(isRestrictedPlatform || !profileObject[platform]) {
+                continue;
+            }
+            outputToDOM += `<tr><td>${platform}</td><td>${profileObject[platform]}</td></tr>\n`
+        }
+        outputToDOM += `</table>\n`
+        resolve(outputToDOM);
+    })
+
+    function grabProfile() {
+        var untreatedIDArray = (window.location.toString()).split('/');
+        var Id = untreatedIDArray[untreatedIDArray.length-1];
+        fetch(IDGetUrl + Id)
+        .then(res => {
+            return res.json()
+        })
+        .then(renderProfileToDOMCode)
+        .then(res => $('#profile').html(res))
+        .catch(err => {return $('#title').text(err)})
+    }
+
+    if((window.location.toString()).includes(IDClientLink)) {
+        grabProfile();
+    }
+
 
 });
