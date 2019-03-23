@@ -17,16 +17,16 @@ f.init
              
 /*-----------SITE-----------*/
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/CLIENT/views/index.html');
+    res.sendFile(__dirname + '/views/index.html');
 });
 app.get('/new', (req, res) => {
-    res.sendFile(__dirname + '/CLIENT/views/new.html');
+    res.sendFile(__dirname + '/views/new.html');
 });
 app.get('/search', (req, res) => {
-    res.sendFile(__dirname + "/CLIENT/views/search.html");
+    res.sendFile(__dirname + '/views/search.html');
 });
 app.get('/id/:id', (req, res) => {
-    res.sendFile(__dirname + "/CLIENT/views/profile.html");
+    res.sendFile(__dirname + '/views/profile.html');
 });
 /*-----------SITE-----------*/
 
