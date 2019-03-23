@@ -1,0 +1,27 @@
+{
+  "name": "presdense",
+  "version": "1.0.0",
+  "description": "Condenses all your social media handles into one handy lil page!",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soopreme/PresDense.git"
+  },
+  "author": "Ethan O'Brien (eobsite1)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/soopreme/PresDense/issues"
+  },
+  "homepage": "https://github.com/soopreme/PresDense#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "nodemon": "^1.18.10"
+  }
+}
