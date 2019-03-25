@@ -1,5 +1,6 @@
 exports.profileArray = [];
 exports.profileID = 0;
+exports.port = 3010;
 
 exports.addProfile = require('./addProfile');
 exports.validateNewProfile = require('./validateNewProfile');
