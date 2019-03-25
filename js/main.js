@@ -95,10 +95,10 @@ $(function() {
     var renderSearchToDOMCode = searchArray => new Promise((resolve, reject) => {
         var outputToDOM = '<table>\n<tr><th>User Name</th><th>Platform</th><th>Profile Name</th>';
         for(i=0; i<searchArray.length; i++) {
-            var isRestrictedPlatform 
-            = searchArray[i].foundPlatform === "name"
+            var isRestrictedPlatform
+            = searchArray[i].foundPlatform === "picurl"
             ? true
-            : searchArray[i].foundPlatform === "picurl"
+            : searchArray[i].foundPlatform === "isAdmin"
             ? true
             : searchArray[i].foundPlatform === "bio"
             ? true
@@ -125,15 +125,24 @@ $(function() {
     $('#submitSearch').click(submitSearch);
 
     var renderProfileToDOMCode = profileObject => new Promise((resolve, reject) => {
-        var outputToDOM = `\n
+        
+        var outputToDOM = (profileObject.isAdmin) 
+        ? `\n
+        <img id="pfp" src="${profileObject.picurl}" />\n
+        <h2>${profileObject.name} <img src="/res/adminIcon.png" style="height: 40px; width: 40px;" /></h2>\n
+        <h4>${profileObject.bio}</h4>\n
+        <br><br>\n
+        <table>\n
+        <tr><th>Platform</th><th>Username</th><tr>\n`
+        : `\n
         <img id="pfp" src="${profileObject.picurl}" />\n
         <h2>${profileObject.name}</h2>\n
         <h4>${profileObject.bio}</h4>\n
         <br><br>\n
         <table>\n
-        <tr><th>Platform</th><th>Username</th><tr>\n`
+        <tr><th>Platform</th><th>Username</th><tr>\n`;
         for(platform in profileObject) {
-            var isRestrictedPlatform = (platform === "name" || platform === "picurl" || platform === "bio" || platform === "profileID") ? true : false;
+            var isRestrictedPlatform = (platform === "isAdmin" || platform === "name" || platform === "picurl" || platform === "bio" || platform === "profileID") ? true : false;
             if(isRestrictedPlatform || !profileObject[platform]) {
                 continue;
             }
