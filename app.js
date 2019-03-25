@@ -10,6 +10,9 @@ app.use(express.json());
 app.use(express.static(__dirname));
 /*-----------MIDDLEWARE-----------*/
 
+
+
+
 /*-----------INIT-----------*/
 f.init
 .catch(err => console.log(err));
@@ -37,6 +40,7 @@ app.get('/id/:id', (req, res) => {
 /*-----------SITE-----------*/
 
 /*-----------API-----------*/
+app.post('/api/edit', api.edit);
 app.post('/api/new', api.new);
 app.post('/api/search/name/', api.search.name);
 app.get('/api/id/:id', api.id);

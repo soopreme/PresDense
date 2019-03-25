@@ -1,7 +1,10 @@
+exports.adminPass = "sociopath";
 exports.profileArray = [];
 exports.profileID = 0;
 exports.port = 3010;
 
+exports.modifyProfile = require('./modifyProfile');
+exports.checkAuthorization = require('./checkAuthorization');
 exports.addProfile = require('./addProfile');
 exports.validateNewProfile = require('./validateNewProfile');
 exports.isArrayPopulated = require('./isArrayPopulated');
