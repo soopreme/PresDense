@@ -21,6 +21,7 @@
   "homepage": "https://github.com/soopreme/PresDense#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "forever": "^0.15.3",
     "fs": "0.0.1-security",
     "nodemon": "^1.18.10"
   }
