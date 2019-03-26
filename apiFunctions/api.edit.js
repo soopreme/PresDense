@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     if(!req.headers.authorization) {
         return res.status(401).json({msg: "No auth header"});
     }
-    if(!body.id.toString()) {
+    if(!body.profileID.toString()) {
         return res.status(400).json({msg: "No name specified"});
     }
     if(f.checkAuthorization(auth)){
