@@ -1,9 +1,4 @@
 $(function() {
-    //homepage
-    $('#newButton').click(() => window.location += "new");
-    $('#searchButton').click(() => window.location += "search");
-    $('#viewButton').click(() => window.location += "view");
-
 
     // new profile page
     var domain = "presdense.soopre.me"
