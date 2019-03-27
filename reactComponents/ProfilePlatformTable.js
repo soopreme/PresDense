@@ -1,7 +1,7 @@
 'use strict';
-class PlatformTable extends React.Component {
+class ProfilePlatformTable extends React.Component {
     tableData() {
-        var profileData = this.props.profileData;
+        var {profileData} = this.props;
         return(<tbody>
             <tr key={"head"}>
                 <th key={"platform head"}>Platform</th>

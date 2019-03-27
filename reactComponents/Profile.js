@@ -1,4 +1,3 @@
-//<PlatformTable data={this.state.profileData} />
 'use strict';
 
 class Profile extends React.Component {
@@ -17,10 +16,11 @@ class Profile extends React.Component {
         : (error === 404)
         ? <NotFound />
         : <div className="container">
+            <Title />
             <img id="pfp" src={profileData.picurl} />
             <h2>{profileData.name}</h2>{(profileData.isAdmin) ? <AdminBadge /> : null}
             <h4>{profileData.bio}</h4>
-            <PlatformTable profileData={profileData} />
+            <ProfilePlatformTable profileData={profileData} />
           </div>
         )
     }
@@ -28,7 +28,7 @@ class Profile extends React.Component {
         fetch("http://localhost:3010/api/id/" + this.props.id)
         .then(res => {
             if(res.status === 404) {
-                this.setState({isLoading: false, profileData: null, error: 404});
+                return this.setState({isLoading: false, profileData: null, error: 404});
             }
             return res.json()
         })

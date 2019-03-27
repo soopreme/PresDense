@@ -1,7 +1,7 @@
 $(function() {
 
     // new profile page
-    var domain = "presdense.soopre.me"
+    var domain = "localhost:3010"
     var IDClientLink = `http://${domain}/id/`
     var notFoundLink = `http://${domain}/404`
     var viewProfileLink = `http://${domain}/view`;
