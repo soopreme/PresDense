@@ -7,24 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
     <script src="/lib/jquery-3.3.1.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" ></script>
+
+    <script src="/reactComponents/AdminBadge.js" type="text/babel"></script>
+    <script src="/reactComponents/PlatformTableRow.js" type="text/babel"></script>
+    <script src="/reactComponents/ProfilePlatformTable.js" type="text/babel"></script>
+    <script src="/reactComponents/Title.js" type="text/babel"></script>
+    <script src="/reactComponents/Loading.js" type="text/babel"></script>
+    <script src="/reactComponents/NotFound.js" type="text/babel"></script>
+    <script src="/reactComponents/Profile.js" type="text/babel"></script>
+    <script src="/reactComponents/NewContainer.js" type="text/babel"></script>
 </head>
 <body>
-    <div class="container">
-        <h1><span id="title">PresDense</span></h1>
-        <h3 id="err"></h3>
-        <input type="text" placeholder="Profile picture URL" id="picurl"/>
-        <input type="text" placeholder="Name" id="name"/>
-        <textarea placeholder="Bio" id="bio"></textarea>
-        <input type="text" placeholder="GitHub" id="github"/>
-        <input type="text" placeholder="Discord" id="discord"/>
-        <input type="text" placeholder="Snapchat" id="snapchat"/>
-        <input type="text" placeholder="Instagram" id="instagram"/>
-        <input type="text" placeholder="Reddit" id="reddit"/>
-        <input type="text" placeholder="Steam" id="steam"/>
-        <input type="text" placeholder="Twitter" id="twitter"/>
-        <input type="text" placeholder="Facebook" id="facebook"/>
-        <br><button id="submit">Submit.</button>
+    <div class="root">
     </div>
 </body>
 </html>

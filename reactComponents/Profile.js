@@ -12,10 +12,10 @@ class Profile extends React.Component {
     render() {
         const {error, profileData, isLoading} = this.state;
         return ((isLoading)
-        ? <div className="container"><Loading /></div>
+        ? <Loading />
         : (error === 404)
         ? <NotFound />
-        : <div className="container">
+        : <div>
             <Title />
             <img id="pfp" src={profileData.picurl} />
             <h2>{profileData.name}</h2>{(profileData.isAdmin) ? <AdminBadge /> : null}
@@ -40,30 +40,3 @@ class Profile extends React.Component {
         this.getData();
     }
 }
-
-var viewProfileLink = "http://localhost:3010/View";
-var notFoundLink = "http://localhost:3010/404";
-
-function getID() {
-    if(window.location.href === viewProfileLink) {
-        return grabIDFromLocalStorage()
-    } else {
-        var untreatedIDArray = (window.location.toString()).split('/');
-        var Id = untreatedIDArray[untreatedIDArray.length-1];
-        return Id;
-    }
-}
-
-function grabIDFromLocalStorage() {
-    var id = localStorage.getItem('id');
-    if(id){
-        return id;
-    } else {
-        window.location = notFoundLink;
-    }
-}
-
-$(() => {
-    const domContainer = document.querySelector('.root');
-    ReactDOM.render(<Profile id={getID()} />, domContainer);
-})
