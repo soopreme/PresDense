@@ -11,12 +11,13 @@ class Profile extends React.Component {
     }
     render() {
         const {error, profileData, isLoading} = this.state;
+        const {cp} = this.props;
         return ((isLoading)
         ? <Loading />
         : (error === 404)
         ? <NotFound />
         : <div>
-            <Title />
+            <Title cp={cp} />
             <img id="pfp" src={profileData.picurl} />
             <h2>{profileData.name}</h2>{(profileData.isAdmin) ? <AdminBadge /> : null}
             <h4>{profileData.bio}</h4>

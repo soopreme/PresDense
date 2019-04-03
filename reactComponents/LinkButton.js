@@ -2,9 +2,10 @@
 
 class LinkButton extends React.Component {
   render() {
+    const {link, cp} = this.props
     return (
-      <button onClick={() => window.location += this.props.link}>
-      {this.props.link}
+      <button onClick={() => cp(link)}>
+      {link}
       </button>
     );
   }

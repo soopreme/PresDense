@@ -1,13 +1,13 @@
 'use strict';
 class SearchResultTable extends React.Component {
     render() {
-        var {data} = this.props;
+        var {data, cp} = this.props;
         var tableData = data.map(dataItem => {
             const {foundPlatform, foundName, profileName, foundProfileID} = dataItem;
-            if(foundPlatform === "picurl" || foundPlatform === "profileID" || foundPlatform === "bio" || foundName === ""){
+            if(foundPlatform === "isAdmin" || foundPlatform === "picurl" || foundPlatform === "profileID" || foundPlatform === "bio" || foundName === ""){
                 return null;
             }
-            return(<SearchResultTableRow platform={foundPlatform} name={foundName} profileName={profileName} id={foundProfileID} />)
+            return(<SearchResultTableRow cp={cp} platform={foundPlatform} name={foundName} profileName={profileName} id={foundProfileID} />)
         }) 
 
         return(<table>
