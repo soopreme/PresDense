@@ -1,12 +1,7 @@
 $(function() {
-    //homepage
-    $('#newButton').click(() => window.location += "new");
-    $('#searchButton').click(() => window.location += "search");
-    $('#viewButton').click(() => window.location += "view");
-
 
     // new profile page
-    var domain = "presdense.soopre.me"
+    var domain = "localhost:3010"
     var IDClientLink = `http://${domain}/id/`
     var notFoundLink = `http://${domain}/404`
     var viewProfileLink = `http://${domain}/view`;
