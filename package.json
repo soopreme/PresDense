@@ -20,9 +20,12 @@
   },
   "homepage": "https://github.com/soopreme/PresDense#readme",
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "express": "^4.16.4",
     "forever": "^0.15.3",
     "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.16.0",
     "nodemon": "^1.18.10"
   }
 }
